@@ -6,6 +6,7 @@ function Watch() {
 
     const {title, id} = useParams()
 
+    window.scrollTo(0, 0)
     
     const data = novel.data.find(item => item.title === title)
     const index = data.episode.findIndex(eps => eps.id === id)
@@ -13,7 +14,7 @@ function Watch() {
     return(
         <>
             <div className='container'>
-                <div className='text-center my-3'>
+                <div className='text-center my-5'>
                     <img src={data.image}/>         
                 </div>
                 <div className='my-5'>

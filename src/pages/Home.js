@@ -6,7 +6,7 @@ import Card from '../components/Card';
 import Banner from '../components/Banner';
 import Label from '../components/Label';
 
-function Home({search}) {
+function Home() {
  
     const [data, setData] = useState([])
 
@@ -16,25 +16,15 @@ function Home({search}) {
 
     useEffect(() => { 
         if(selectedLabel){
-            const rawData = novel.data.filter(item => item.genre === selectedLabel)
-            setData(rawData)
-            if(search){
-                const newData = rawData.filter(item => item.title.toLowerCase().includes(search.toLowerCase().trim()))
-                setData(newData)
-            }
-            
-        }else{
-            if(search){   
-                const newData = novel.data.filter(item => item.title.toLowerCase().includes(search.toLowerCase().trim()))
-                setData(newData)
-            } else{
-                let labels = [...new Set(novel.data.map(item => item.genre))];
-                setLabel(labels) 
-                const newData = novel.data
-                setData(newData)
-            }  
+            const newData = novel.data.filter(item => item.genre === selectedLabel)
+            setData(newData)
+        }else{  
+            let labels = [...new Set(novel.data.map(item => item.genre))];
+            setLabel(labels) 
+            const newData = novel.data
+            setData(newData)
         }
-    }, [search, selectedLabel])
+    }, [selectedLabel])
     
   
     return(

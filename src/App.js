@@ -5,20 +5,21 @@ import Detail from './pages/Detail';
 import Home from './pages/Home';
 import Watch from './pages/Watch';
 import { useState, useEffect } from "react";
-import Banner from "./components/Banner";
+import Search from "./pages/Search";
 
 function App() {
 
-  const [search, setSearch] = useState(null)
+  const [searchParams, setSearchParams] = useState(null)
 
   return (
     <>
     <Navbar
-      search={search}
-      setSearch={setSearch}
+      searchParams={searchParams}
+      setSearchParams={setSearchParams}
     />
     <Routes>
-        <Route exact path="/" element={ <Home search={search}/> } />
+        <Route exact path="/" element={ <Home/> } />
+        <Route exact path="/search/:search" element={ <Search/> } />
         <Route exact path="/detail/:id" element={ <Detail/> } />
         <Route exact path="detail/:title/watch/:id" element={ <Watch/> } />
      </Routes>

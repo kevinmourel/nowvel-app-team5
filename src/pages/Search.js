@@ -1,23 +1,21 @@
 import novel from '../data/novel.json'
 import { useParams } from 'react-router-dom'
 
-import ListEpisode from '../components/ListEpisode';
 import Header from '../components/Header';
 
-function Detail() {
-    const {id} = useParams()
+function Search() {
+    const {search} = useParams()
 
-    const data = novel.data.filter(item => item.id === id )
+    const data = novel.data.filter(item => item.title.toLowerCase().includes(search.toLowerCase().trim()))
 
-    const {title, episode} = data[0]
     
     return(
         <>
             <div className='container'>  
+                <h2 className="my-3">Found {data.length} results : </h2>
                 <Header data={data}/>         
-                <ListEpisode title={title} episode={episode}/>
             </div>
         </> 
     )
 }
-export default Detail;
+export default Search;

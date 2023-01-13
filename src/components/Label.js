@@ -8,8 +8,7 @@ function Label({data, selectedLabel, setSelectedLabel}) {
                     <button 
                         type="button" 
                         className={ selectedLabel === item ? 'btn btn-primary rounded-pill me-2' : 'btn btn-outline-primary rounded-pill me-2' } 
-                        onClick={() => setSelectedLabel(item)}
-                        onDoubleClick={() => setSelectedLabel("")}
+                        onClick={() => selectedLabel === item ? setSelectedLabel('') : setSelectedLabel(item)}
                         >
                         <span>{item}</span>
                     </button>
